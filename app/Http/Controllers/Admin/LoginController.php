@@ -31,7 +31,7 @@ class LoginController extends CommonController
 
             dd(count($username));
         }else{
-            return view('admin.page.login.login');
+            return view('admin.session.login');
         }
 
     }
