@@ -1,19 +1,9 @@
 ##   cmd
-- Éú³É¿ØÖÆÆ÷ php artisan make:controller UserController
-- Éú³ÉÄ£ĞÍ   php artisan make:model User (´ËÖÖ·½Ê½Éú³ÉµÄÄ£ĞÍ·ÅÖÃÔÚappÏÂ)
-- Éú³ÉÄ£ĞÍÍ¬Ê±Ö¸¶¨ÃüÃû¿Õ¼ä  php artisan make:model Models/User (ÔÚapp/ModelsÏÂÉú³ÉUserÄ£ĞÍ)
-- Éú³ÉÄ£ĞÍÍ¬Ê±Éú³ÉÇ¨ÒÆÎÄ¼ş  php artisan make:model Models/User -m (Ôö¼Ó-m»ò-migrate»áÍ¬Ê±°ïÎÒÃÇÉú³ÉÇ¨ÒÆÎÄ¼ş)
+composer install - å¦‚æœ‰ composer.lock æ–‡ä»¶ï¼Œç›´æ¥å®‰è£…ï¼Œå¦åˆ™ä» composer.json å®‰è£…æœ€æ–°æ‰©å±•åŒ…å’Œä¾èµ–ï¼›
+composer update - ä» composer.json å®‰è£…æœ€æ–°æ‰©å±•åŒ…å’Œä¾èµ–ï¼›
+composer update vendor/package - ä» composer.json æˆ–è€…å¯¹åº”åŒ…çš„é…ç½®ï¼Œå¹¶æ›´æ–°åˆ°æœ€æ–°ï¼›
+composer require new/package - æ·»åŠ å®‰è£… new/package, å¯ä»¥æŒ‡å®šç‰ˆæœ¬ï¼Œå¦‚ï¼š composer require new/package ~2.5.
+composer remove ramsey/uuid   å¸è½½åŒ…
 
-- Êı¾İ¿âÇ¨ÒÆ php artisan migrate
-- Êı¾İ¿â»Ø¹ö php artisan migrate:rollback
-- Êı¾İ¿âÖØÖÃ php artisan migrate:refresh        //refresh µÄ×÷ÓÃÊÇÖØÖÃÊı¾İ¿â²¢ÖØĞÂÔËĞĞËùÓĞÇ¨ÒÆ
-
-
-Ô¼¶¨ÓÅÓÚÅäÖÃ¡»£¨convention over configuration£©£¬Ò²³Æ×÷°´Ô¼¶¨±à³Ì£¬ÕâÊÇÒ»ÖÖÈí¼şÉè¼Æ·¶Ê½£¬Ö¼ÔÚ¼õÉÙÈí¼ş¿ª·¢ÈËÔ±Ğè×ö¾ö¶¨µÄÊıÁ¿£¬»ñµÃ¼òµ¥µÄºÃ´¦£¬¶øÓÖ²»Ê§Áé»îĞÔ¡£
-Èç¹ûËùÓÃ¹¤¾ßµÄÔ¼¶¨ÓëÄãµÄÆÚ´ıÏà·û£¬±ã¿ÉÊ¡È¥ÅäÖÃ; ·´Ö®£¬Äã¿ÉÒÔÅäÖÃÀ´´ïµ½ÄãËùÆÚ´ıµÄ·½Ê½.
-¡ºÔ¼¶¨ÓÅÓÚÅäÖÃ¡»ÄÜ¼«´óÌá¸ß¿ª·¢Ğ§ÂÊ£¬²¢ÇÒÒ²¸üÓĞÀûÓÚÍÅ¶ÓĞ­×÷¡£Laravel ÏîÄ¿ÖĞ´óÁ¿µÄÊ¹ÓÃÁË¡ºÔ¼¶¨ÓÅÓÚÅäÖÃ¡»ÕâÖÖÉè¼Æ·¶Ê½£¬ÕâÒ²ÊÇ Laravel µÄÁíÒ»¸ö¿É°®Ö®´¦¡£
-
-
-##¶àÓïÑÔ´¦Àí
-https://fsdhub.com/books/laravel-essential-training-5.5/587/registration-failed-error-message
-Ê¹ÓÃÀ©Õ¹°ülaravel-lang https://github.com/overtrue/laravel-lang/blob/master/README_CN.md
+##é¡¹ç›®ä½¿ç”¨åˆ°çš„æ’ä»¶
+- uuid https://packagist.org/packages/emadadly/laravel-uuid

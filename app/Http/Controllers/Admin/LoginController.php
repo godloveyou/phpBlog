@@ -4,36 +4,47 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Gregwar\Captcha\CaptchaBuilder;
-class LoginController extends CommonController
+use Auth;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+class LoginController extends Controller
 {
     //
     public function login(Request $request)
     {
-        if($request->isMethod('post')){
-            //echo "post request..";
-            $datas = $request->all();
-            $username = $datas['username'];
-            $password = $datas['password'];
-            $code = $datas['code'];
+        if ($request->isMethod('post')) {
+            $this->validate($request,[
+              'email'=>'required|email|max:255',
+              'password'=>'required',
+              'vcode'=>'required'
+            ]);
+
+            $code = $request['vcode'];
             $currentCode = session('code');
-            if(strlen($code)<1){
-                return back()->with('msg','验证码不能为空');
-            }
-            if(strtoupper($code)!=strtoupper($currentCode)){
-                return back()->with('msg','验证码错误');
-            }
-            if(strlen($username)<1){
-                return back()->with('msg','用户名不能为空');
-            }
-            if(strlen($password)<1){
-                return back()->with('msg','密码不能为空');
+            $usercred = array(
+                'email' =>$request['email'],
+                'password' => $request['password']
+            );
+            if (strtoupper($code)!=strtoupper($currentCode)) {
+                session()->flash('danger',"验证码错误");
+                return view('admin.session.login');
             }
 
-            dd(count($username));
-        }else{
+            if(Auth::attempt($usercred)){
+                session()->flash('success',"登录成功");
+                return view('admin.index');
+            }else{
+
+                   session()->flash('danger',"登录失败[用户名密码错]");
+                   return redirect()->back();
+            }
+
+
+
+        } else {
             return view('admin.session.login');
         }
-
     }
 
     public function code()
