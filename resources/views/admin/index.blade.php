@@ -22,7 +22,7 @@
 		<!-- 顶部 -->
 		<div class="layui-header header">
 			<div class="layui-main">
-				<a href="#" class="logo">后台管理</a>
+				<a href="{{route('admin.index')}}" class="logo">后台管理</a>
 				<!-- 显示/隐藏菜单 -->
 				<a href="javascript:;" class="iconfont hideMenu icon-menu1"></a>
 				<!-- 搜索 -->
@@ -149,7 +149,7 @@
 				</ul>
 				<div class="layui-tab-content clildFrame">
 					<div class="layui-tab-item layui-show">
-						<iframe src="{{route('admin.main')}}"></iframe>
+						<iframe src="{{route('admin.weclome')}}"></iframe>
 					</div>
 				</div>
 			</div>
@@ -167,6 +167,9 @@
 	<script type="text/javascript" src="{{asset('/assets/admin/layui/layui.js')}}"></script>
 	<script type="text/javascript" src="{{asset('/assets/admin/js/leftNav.js')}}"></script>
 	<script type="text/javascript" src="{{asset('/assets/admin/js/index.js')}}"></script>
+	<script>
+
+	</script>
 </body>
 
 </html>

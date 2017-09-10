@@ -23,15 +23,23 @@ gulp.task('css', function(){
 })
 
 // 编译全部js 并压缩
-gulp.task('js', function() {
-  gulp.src(src+'/**/*.js')
-    .pipe(plumber())
-    .pipe(babel({
-      presets: ['es2015']
-    }))
-    .pipe(uglify())
+// gulp.task('js', function() {
+//   gulp.src(src+'/**/*.js')
+//     .pipe(plumber())
+//     .pipe(babel({
+//       presets: ['es2015']
+//     }))
+//     .pipe(uglify())
+//     .pipe(gulp.dest(dist));
+// });
+
+//bodyTab.js有一个问题 暂时不压缩js
+gulp.task('js', function () {
+    gulp.src(src+'/**/*.js')
+    .pipe(copy())
     .pipe(gulp.dest(dist));
 });
+
 
 // 压缩全部html
 gulp.task('html', function () {

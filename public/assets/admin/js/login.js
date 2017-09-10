@@ -1,1 +1,21 @@
-"use strict";layui.config({base:"js/"}).use(["form","layer"],function(){var i=layui.form(),e=(void 0===parent.layer?layui.layer:parent.layer,layui.jquery);e(window).resize(function(){e(".video-player").width()>e(window).width()?e(".video-player").css({height:e(window).height(),width:"auto",left:-(e(".video-player").width()-e(window).width())/2}):e(".video-player").css({width:e(window).width(),height:"auto",left:-(e(".video-player").width()-e(window).width())/2})}).resize(),i.on("submit(login)",function(i){return!0})});
+layui.config({
+	base : "js/"
+}).use(['form','layer'],function(){
+	var form = layui.form(),
+		layer = parent.layer === undefined ? layui.layer : parent.layer,
+		$ = layui.jquery;
+	//video背景
+	$(window).resize(function(){
+		if($(".video-player").width() > $(window).width()){
+			$(".video-player").css({"height":$(window).height(),"width":"auto","left":-($(".video-player").width()-$(window).width())/2});
+		}else{
+			$(".video-player").css({"width":$(window).width(),"height":"auto","left":-($(".video-player").width()-$(window).width())/2});
+		}
+	}).resize();
+	
+	//登录按钮事件
+	form.on("submit(login)",function(data){
+		//window.location.href = "../../../resources/views/admin/index.html";
+		return true;
+	})
+})

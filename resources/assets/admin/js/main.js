@@ -35,21 +35,21 @@ layui.config({
 	)
 
 	//图片总数
-	$.get("../json/images.json",
+	$.get("/assets/admin/json/images.json",
 		function(data){
 			$(".imgAll span").text(data.length);
 		}
 	)
 
 	//用户数
-	$.get("../json/usersList.json",
+	$.get("/assets/admin/json/usersList.json",
 		function(data){
 			$(".userAll span").text(data.length);
 		}
 	)
 
 	//新消息
-	$.get("../json/message.json",
+	$.get("/assets/admin/json/message.json",
 		function(data){
 			$(".newMessage span").text(data.length);
 		}
@@ -58,7 +58,7 @@ layui.config({
 
 	//数字格式化
 	$(".panel span").each(function(){
-		$(this).html($(this).text()>9999 ? ($(this).text()/10000).toFixed(2) + "<em>万</em>" : $(this).text());	
+		$(this).html($(this).text()>9999 ? ($(this).text()/10000).toFixed(2) + "<em>万</em>" : $(this).text());
 	})
 
 	//系统基本参数
@@ -67,7 +67,7 @@ layui.config({
 		fillParameter(systemParameter);
 	}else{
 		$.ajax({
-			url : "../json/systemParameter.json",
+			url : "/assets/admin/json/systemParameter.json",
 			type : "get",
 			dataType : "json",
 			success : function(data){

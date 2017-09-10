@@ -1,1 +1,98 @@
-"use strict";layui.config({base:"js/"}).use(["form","element","layer","jquery"],function(){function e(e){function s(e){return""==e||"undefined"==e?"未定义":e}t(".version").text(s(e.version)),t(".author").text(s(e.author)),t(".homePage").text(s(e.homePage)),t(".server").text(s(e.server)),t(".dataBase").text(s(e.dataBase)),t(".maxUpload").text(s(e.maxUpload)),t(".userRights").text(s(e.userRights))}var t=(layui.form(),void 0===parent.layer?layui.layer:parent.layer,layui.element(),layui.jquery);if(t(".panel a").on("click",function(){window.parent.addTab(t(this))}),t.get("../json/newsList.json",function(e){var s=[];t(".allNews span").text(e.length);for(var n=0;n<e.length;n++){var a=e[n];"待审核"==a.newsStatus&&s.push(a)}t(".waitNews span").text(s.length);for(var o="",n=0;n<5;n++)o+='<tr><td align="left">'+e[n].newsName+"</td><td>"+e[n].newsTime+"</td></tr>";t(".hot_news").html(o)}),t.get("../json/images.json",function(e){t(".imgAll span").text(e.length)}),t.get("../json/usersList.json",function(e){t(".userAll span").text(e.length)}),t.get("../json/message.json",function(e){t(".newMessage span").text(e.length)}),t(".panel span").each(function(){t(this).html(t(this).text()>9999?(t(this).text()/1e4).toFixed(2)+"<em>万</em>":t(this).text())}),window.sessionStorage.getItem("systemParameter")){e(JSON.parse(window.sessionStorage.getItem("systemParameter")))}else t.ajax({url:"../json/systemParameter.json",type:"get",dataType:"json",success:function(t){e(t)}})});
+layui.config({
+	base : "js/"
+}).use(['form','element','layer','jquery'],function(){
+	var form = layui.form(),
+		layer = parent.layer === undefined ? layui.layer : parent.layer,
+		element = layui.element(),
+		$ = layui.jquery;
+
+	$(".panel a").on("click",function(){
+		window.parent.addTab($(this));
+	})
+
+	//动态获取文章总数和待审核文章数量,最新文章
+	$.get("../json/newsList.json",
+		function(data){
+			var waitNews = [];
+			$(".allNews span").text(data.length);  //文章总数
+			for(var i=0;i<data.length;i++){
+				var newsStr = data[i];
+				if(newsStr["newsStatus"] == "待审核"){
+					waitNews.push(newsStr);
+				}
+			}
+			$(".waitNews span").text(waitNews.length);  //待审核文章
+			//加载最新文章
+			var hotNewsHtml = '';
+			for(var i=0;i<5;i++){
+				hotNewsHtml += '<tr>'
+		    	+'<td align="left">'+data[i].newsName+'</td>'
+		    	+'<td>'+data[i].newsTime+'</td>'
+		    	+'</tr>';
+			}
+			$(".hot_news").html(hotNewsHtml);
+		}
+	)
+
+	//图片总数
+	$.get("/assets/admin/json/images.json",
+		function(data){
+			$(".imgAll span").text(data.length);
+		}
+	)
+
+	//用户数
+	$.get("/assets/admin/json/usersList.json",
+		function(data){
+			$(".userAll span").text(data.length);
+		}
+	)
+
+	//新消息
+	$.get("/assets/admin/json/message.json",
+		function(data){
+			$(".newMessage span").text(data.length);
+		}
+	)
+
+
+	//数字格式化
+	$(".panel span").each(function(){
+		$(this).html($(this).text()>9999 ? ($(this).text()/10000).toFixed(2) + "<em>万</em>" : $(this).text());
+	})
+
+	//系统基本参数
+	if(window.sessionStorage.getItem("systemParameter")){
+		var systemParameter = JSON.parse(window.sessionStorage.getItem("systemParameter"));
+		fillParameter(systemParameter);
+	}else{
+		$.ajax({
+			url : "/assets/admin/json/systemParameter.json",
+			type : "get",
+			dataType : "json",
+			success : function(data){
+				fillParameter(data);
+			}
+		})
+	}
+
+	//填充数据方法
+ 	function fillParameter(data){
+ 		//判断字段数据是否存在
+ 		function nullData(data){
+ 			if(data == '' || data == "undefined"){
+ 				return "未定义";
+ 			}else{
+ 				return data;
+ 			}
+ 		}
+ 		$(".version").text(nullData(data.version));      //当前版本
+		$(".author").text(nullData(data.author));        //开发作者
+		$(".homePage").text(nullData(data.homePage));    //网站首页
+		$(".server").text(nullData(data.server));        //服务器环境
+		$(".dataBase").text(nullData(data.dataBase));    //数据库版本
+		$(".maxUpload").text(nullData(data.maxUpload));    //最大上传限制
+		$(".userRights").text(nullData(data.userRights));//当前用户权限
+ 	}
+
+})

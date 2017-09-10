@@ -34,7 +34,7 @@ class LoginController extends Controller
 
             if (Auth::attempt($usercred)) {
                 session()->flash('success', "登录成功");
-                return view('admin.index');
+                return redirect('/admin/index');
             } else {
                 session()->flash('danger', "登录失败[用户名密码错]");
                 return redirect()->back();

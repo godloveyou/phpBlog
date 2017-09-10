@@ -1,1 +1,63 @@
-"use strict";function navBar(i){var a;if("string"==typeof i)var a=JSON.parse(i);else a=i;for(var c='<ul class="layui-nav layui-nav-tree">',n=0;n<a.length;n++){if(a[n].spread?c+='<li class="layui-nav-item layui-nav-itemed">':c+='<li class="layui-nav-item">',void 0!=a[n].children&&a[n].children.length>0){c+='<a href="javascript:;">',void 0!=a[n].icon&&""!=a[n].icon&&(-1!=a[n].icon.indexOf("icon-")?c+='<i class="iconfont '+a[n].icon+'" data-icon="'+a[n].icon+'"></i>':c+='<i class="layui-icon" data-icon="'+a[n].icon+'">'+a[n].icon+"</i>"),c+="<cite>"+a[n].title+"</cite>",c+='<span class="layui-nav-more"></span>',c+="</a>",c+='<dl class="layui-nav-child">';for(var e=0;e<a[n].children.length;e++)"_blank"==a[n].children[e].target?c+='<dd><a href="javascript:;" data-url="'+a[n].children[e].href+'" target="'+a[n].children[e].target+'">':c+='<dd><a href="javascript:;" data-url="'+a[n].children[e].href+'">',void 0!=a[n].children[e].icon&&""!=a[n].children[e].icon&&(-1!=a[n].children[e].icon.indexOf("icon-")?c+='<i class="iconfont '+a[n].children[e].icon+'" data-icon="'+a[n].children[e].icon+'"></i>':c+='<i class="layui-icon" data-icon="'+a[n].children[e].icon+'">'+a[n].children[e].icon+"</i>"),c+="<cite>"+a[n].children[e].title+"</cite></a></dd>";c+="</dl>"}else"_blank"==a[n].target?c+='<a href="javascript:;" data-url="'+a[n].href+'" target="'+a[n].target+'">':c+='<a href="javascript:;" data-url="'+a[n].href+'">',void 0!=a[n].icon&&""!=a[n].icon&&(-1!=a[n].icon.indexOf("icon-")?c+='<i class="iconfont '+a[n].icon+'" data-icon="'+a[n].icon+'"></i>':c+='<i class="layui-icon" data-icon="'+a[n].icon+'">'+a[n].icon+"</i>"),c+="<cite>"+a[n].title+"</cite></a>";c+="</li>"}return c+="</ul>"}
+function navBar(strData){
+	var data;
+	if(typeof(strData) == "string"){
+		var data = JSON.parse(strData); //部分用户解析出来的是字符串，转换一下
+	}else{
+		data = strData;
+	}	
+	var ulHtml = '<ul class="layui-nav layui-nav-tree">';
+	for(var i=0;i<data.length;i++){
+		if(data[i].spread){
+			ulHtml += '<li class="layui-nav-item layui-nav-itemed">';
+		}else{
+			ulHtml += '<li class="layui-nav-item">';
+		}
+		if(data[i].children != undefined && data[i].children.length > 0){
+			ulHtml += '<a href="javascript:;">';
+			if(data[i].icon != undefined && data[i].icon != ''){
+				if(data[i].icon.indexOf("icon-") != -1){
+					ulHtml += '<i class="iconfont '+data[i].icon+'" data-icon="'+data[i].icon+'"></i>';
+				}else{
+					ulHtml += '<i class="layui-icon" data-icon="'+data[i].icon+'">'+data[i].icon+'</i>';
+				}
+			}
+			ulHtml += '<cite>'+data[i].title+'</cite>';
+			ulHtml += '<span class="layui-nav-more"></span>';
+			ulHtml += '</a>';
+			ulHtml += '<dl class="layui-nav-child">';
+			for(var j=0;j<data[i].children.length;j++){
+				if(data[i].children[j].target == "_blank"){
+					ulHtml += '<dd><a href="javascript:;" data-url="'+data[i].children[j].href+'" target="'+data[i].children[j].target+'">';
+				}else{
+					ulHtml += '<dd><a href="javascript:;" data-url="'+data[i].children[j].href+'">';
+				}
+				if(data[i].children[j].icon != undefined && data[i].children[j].icon != ''){
+					if(data[i].children[j].icon.indexOf("icon-") != -1){
+						ulHtml += '<i class="iconfont '+data[i].children[j].icon+'" data-icon="'+data[i].children[j].icon+'"></i>';
+					}else{
+						ulHtml += '<i class="layui-icon" data-icon="'+data[i].children[j].icon+'">'+data[i].children[j].icon+'</i>';
+					}
+				}
+				ulHtml += '<cite>'+data[i].children[j].title+'</cite></a></dd>';
+			}
+			ulHtml += "</dl>";
+		}else{
+			if(data[i].target == "_blank"){
+				ulHtml += '<a href="javascript:;" data-url="'+data[i].href+'" target="'+data[i].target+'">';
+			}else{
+				ulHtml += '<a href="javascript:;" data-url="'+data[i].href+'">';
+			}
+			if(data[i].icon != undefined && data[i].icon != ''){
+				if(data[i].icon.indexOf("icon-") != -1){
+					ulHtml += '<i class="iconfont '+data[i].icon+'" data-icon="'+data[i].icon+'"></i>';
+				}else{
+					ulHtml += '<i class="layui-icon" data-icon="'+data[i].icon+'">'+data[i].icon+'</i>';
+				}
+			}
+			ulHtml += '<cite>'+data[i].title+'</cite></a>';
+		}
+		ulHtml += '</li>';
+	}
+	ulHtml += '</ul>';
+	return ulHtml;
+}
