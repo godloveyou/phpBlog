@@ -1,4 +1,4 @@
-![](https://baijunyao.com/uploads/article/20170101/1483285372262949.jpg)
+![](http://static.laravelacademy.org/wp-statics/images/carousel/LaravelAcademy.jpg)
 # Install 项目安装步骤
 1. 拷贝修改自己的项目.env （homestead环境下需要将.env的数据库端口指定为33060）
 
