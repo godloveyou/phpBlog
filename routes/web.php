@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::any('/admin/login', 'Admin\LoginController@login');
 Route::get('/admin/code', 'Admin\LoginController@code');
 Route::get('/admin/getCode', 'Admin\LoginController@getCode');
+Route::get('/admin/main', 'Admin\IndexController@main');

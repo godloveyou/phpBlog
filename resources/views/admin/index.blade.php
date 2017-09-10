@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>layui后台管理模板</title>
+	<title>后台管理</title>
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -12,9 +12,9 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
 	<link rel="icon" href="favicon.ico">
-	<link rel="stylesheet" href="layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="{{asset('/assets/admin/layui/css/layui.css')}}" media="all" />
 	<link rel="stylesheet" href="//at.alicdn.com/t/font_tnyc012u2rlwstt9.css" media="all" />
-	<link rel="stylesheet" href="css/main.css" media="all" />
+	<link rel="stylesheet" href="{{asset('/assets/admin/css/main.css')}}" media="all" />
 </head>
 
 <body class="main_body">
@@ -22,7 +22,7 @@
 		<!-- 顶部 -->
 		<div class="layui-header header">
 			<div class="layui-main">
-				<a href="#" class="logo">layui后台管理</a>
+				<a href="#" class="logo">后台管理</a>
 				<!-- 显示/隐藏菜单 -->
 				<a href="javascript:;" class="iconfont hideMenu icon-menu1"></a>
 				<!-- 搜索 -->
@@ -111,7 +111,7 @@
 					</li>
 					<li class="layui-nav-item" pc>
 						<a href="javascript:;">
-							<img src="images/face.jpg" class="layui-circle" width="35" height="35">
+							<img src="{{asset('/assets/admin/images/face.jpg')}}" class="layui-circle" width="35" height="35">
 							<cite>请叫我马哥</cite>
 						</a>
 						<dl class="layui-nav-child">
@@ -127,7 +127,7 @@
 		<!-- 左侧导航 -->
 		<div class="layui-side layui-bg-black">
 			<div class="user-photo">
-				<a class="img" title="我的头像"><img src="images/face.jpg"></a>
+				<a class="img" title="我的头像"><img src="{{asset('/assets/admin/images/face.jpg')}}"></a>
 				<p>你好！<span class="userName">请叫我马哥</span>, 欢迎登录</p>
 			</div>
 			<div class="navBar layui-side-scroll"></div>
@@ -149,14 +149,14 @@
 				</ul>
 				<div class="layui-tab-content clildFrame">
 					<div class="layui-tab-item layui-show">
-						<iframe src="page/main.html"></iframe>
+						<iframe src="{{route('admin.main')}}"></iframe>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- 底部 -->
 		<div class="layui-footer footer">
-			<p>copyright @2017 请叫我马哥　　<a onclick="donation()" class="layui-btn layui-btn-danger l·ayui-btn-small">捐赠作者</a></p>
+			<p>copyright @2017 　　<a onclick="donation()" class="layui-btn layui-btn-danger l·ayui-btn-small">捐赠作者</a></p>
 		</div>
 	</div>
 
@@ -164,9 +164,9 @@
 	<div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
 	<div class="site-mobile-shade"></div>
 
-	<script type="text/javascript" src="layui/layui.js"></script>
-	<script type="text/javascript" src="js/leftNav.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="{{asset('/assets/admin/layui/layui.js')}}"></script>
+	<script type="text/javascript" src="{{asset('/assets/admin/js/leftNav.js')}}"></script>
+	<script type="text/javascript" src="{{asset('/assets/admin/js/index.js')}}"></script>
 </body>
 
 </html>
