@@ -49,3 +49,13 @@
 ***
 ## Markdown
 >[**MarkDown10分钟入门**](http://www.jianshu.com/p/1e402922ee32/)
+
+***
+##laravel常用命令
+* 创建模型的同时顺便创建数据库迁移则可以使用 --migration 或 -m 选项
+`$ php artisan make:model Models/Article -m `
+
+***
+##larvel中约定优于配置
+Eloquent 数据表命名约定机制即属于『约定优于配置』，数据模型类 Article 按照系统约定对应于 articles 数据表，
+如果我们因为特殊原因需要使用其他表名称，只需要通过配置 $table 即可达到预期

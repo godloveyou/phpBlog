@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('head_img')->nullable();
             $table->string('email')->unique();
             $table->string('mobile')->nullable();
+
         });
     }
 

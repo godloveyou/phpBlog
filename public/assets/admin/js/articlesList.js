@@ -8,7 +8,7 @@ layui.config({
 
 	//加载页面数据
 	var newsData = '';
-	$.get("../../json/newsList.json", function(data){
+	$.get("/assets/admin/json/newsList.json", function(data){
 		var newArray = [];
 		//单击首页“待审核文章”加载的信息
 		if($(".top_tab li.layui-this cite",parent.document).text() == "待审核文章"){
@@ -98,7 +98,7 @@ layui.config({
 		            	newsList(newsData);
 					}
 				})
-            	
+
                 layer.close(index);
             },2000);
 		}else{
@@ -113,7 +113,7 @@ layui.config({
 			var index = layui.layer.open({
 				title : "添加文章",
 				type : 2,
-				content : "newsAdd.html",
+				content : "/admin/article/create",
 				success : function(layero, index){
 					setTimeout(function(){
 						layui.layer.tips('点击此处返回文章列表', '.layui-layer-setwin .layui-layer-close', {
@@ -121,7 +121,7 @@ layui.config({
 						});
 					},500)
 				}
-			})			
+			})
 			layui.layer.full(index);
 		})
 	}).resize();
@@ -223,7 +223,7 @@ layui.config({
 			layer.msg("展示状态修改成功！");
         },2000);
 	})
- 
+
 	//操作
 	$("body").on("click",".news_edit",function(){  //编辑
 		layer.alert('您点击了文章编辑按钮，由于是纯静态页面，所以暂时不存在编辑内容，后期会添加，敬请谅解。。。',{icon:6, title:'文章编辑'});

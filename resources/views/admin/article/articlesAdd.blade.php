@@ -9,7 +9,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="{{asset('/assets/admin/layui/css/layui.css')}}" media="all" />
 </head>
 <body class="childrenBody">
 	<form class="layui-form">
@@ -28,13 +28,13 @@
 					<input type="checkbox" name="show" class="isShow" title="展示">
 				</div>
 			</div>
-			<div class="layui-inline">		
+			<div class="layui-inline">
 				<label class="layui-form-label">文章作者</label>
 				<div class="layui-input-inline">
 					<input type="text" class="layui-input newsAuthor" lay-verify="required" placeholder="请输入文章作者">
 				</div>
 			</div>
-			<div class="layui-inline">		
+			<div class="layui-inline">
 				<label class="layui-form-label">发布时间</label>
 				<div class="layui-input-inline">
 					<input type="text" class="layui-input newsTime" lay-verify="required|date" onclick="layui.laydate({elem:this})">
@@ -75,7 +75,7 @@
 		    </div>
 		</div>
 	</form>
-	<script type="text/javascript" src="../../layui/layui.js"></script>
-	<script type="text/javascript" src="newsAdd.js"></script>
+	<script type="text/javascript" src="{{asset('/assets/admin/layui/layui.js')}}"></script>
+	<script type="text/javascript" src="{{asset('/assets/admin/js/articlesAdd.js')}}"></script>
 </body>
 </html>

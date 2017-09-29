@@ -11,7 +11,8 @@ class IndexController extends Controller
     public function index()
     {
        // echo "hello";
-        $pdo = DB::connection()->getPdo();
-        dd($pdo);
+        // $pdo = DB::connection()->getPdo();
+        // dd($pdo);
+        return view('home.index');
     }
 }

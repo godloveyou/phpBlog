@@ -11,7 +11,14 @@ use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
-    //
+    //退出
+    public function destory()
+    {
+      Auth::logout();
+      return redirect('admin/login');
+    }
+
+    //登录
     public function login(Request $request)
     {
         if ($request->isMethod('post')) {

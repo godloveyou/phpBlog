@@ -112,13 +112,21 @@
 					<li class="layui-nav-item" pc>
 						<a href="javascript:;">
 							<img src="{{asset('/assets/admin/images/face.jpg')}}" class="layui-circle" width="35" height="35">
-							<cite>请叫我马哥</cite>
+							<cite>{{ Auth::user()->username }}</cite>
 						</a>
 						<dl class="layui-nav-child">
 							<dd><a href="javascript:;" data-url="page/user/userInfo.html"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
 							<dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
 							<dd><a href="javascript:;" class="changeSkin"><i class="iconfont icon-huanfu"></i><cite>更换皮肤</cite></a></dd>
-							<dd><a href="page/login/login.blade.php" class="signOut"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
+							<dd>
+								<form action="/admin/logout">
+									{{ csrf_field() }}
+                  {{ method_field('DELETE') }}
+									<a  href="/admin/logout" class="signOut">
+										<i class="iconfont icon-loginout"></i><cite>退出</cite></a>
+								</form>
+
+								</dd>
 						</dl>
 					</li>
 				</ul>
@@ -128,7 +136,7 @@
 		<div class="layui-side layui-bg-black">
 			<div class="user-photo">
 				<a class="img" title="我的头像"><img src="{{asset('/assets/admin/images/face.jpg')}}"></a>
-				<p>你好！<span class="userName">请叫我马哥</span>, 欢迎登录</p>
+				<p>你好！<span class="userName">{{ Auth::user()->username }}</span>, 欢迎登录</p>
 			</div>
 			<div class="navBar layui-side-scroll"></div>
 		</div>
@@ -156,7 +164,7 @@
 		</div>
 		<!-- 底部 -->
 		<div class="layui-footer footer">
-			<p>copyright @2017 　　<a onclick="donation()" class="layui-btn layui-btn-danger l·ayui-btn-small">捐赠作者</a></p>
+			<p>copyright @2017 </p>
 		</div>
 	</div>
 

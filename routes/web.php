@@ -11,12 +11,17 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('home.index');
+});
 
 Route::get('/admin/index', 'Admin\IndexController@index')->name('admin.index');
-Route::any('/admin/login', 'Admin\LoginController@login');
+Route::any('/admin/login', 'Admin\LoginController@login')->name('admin.login');
+Route::get('/admin/logout', 'Admin\LoginController@destory');
 Route::get('/admin/code', 'Admin\LoginController@code');
 Route::get('/admin/getCode', 'Admin\LoginController@getCode');
 Route::get('/admin/weclome', 'Admin\IndexController@weclome')->name('admin.weclome');
+
+Route::get('/admin/article/index','Admin\ArticlesController@index');
+Route::get('/admin/article/create','Admin\ArticlesController@create');
+Route::post('/admin/article/store','Admin\ArticlesController@store')->name('admin.article.store');
