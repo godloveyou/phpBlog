@@ -16,15 +16,18 @@ class CreateArticlesTable extends Migration
         //
         Schema::create('articles', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->uuid('article_id')->unique();
+            $table->increments('article_id');
             $table->string('article_title')->nullable();
             $table->string('article_desc')->nullable();
             $table->string('article_content');
-            $table->string('article_click');
+            $table->integer('article_click')->default(0);
             $table->string('user_id');
             $table->string('sort_article_id'); //分类
             $table->string('article_up'); //是否置顶
-
+            $table->string('author');
+            $table->string('seokeywords');
+            $table->string('tag_id');
+            $table->timestamps();
         });
     }
 

@@ -1,10 +1,5 @@
 @if(count($errors)>0)
-<div class="alert alert-danger">
-  <ul>
-    @foreach($errors->all() as $error)
-        <li>{{$error}}</li>
-    @endforeach
-
-  </ul>
-</div>
+  @foreach($errors->all() as $error)
+    <blockquote class="layui-elem-quote layui-quote-nm">{{$error}}</blockquote>
+  @endforeach
 @endif
