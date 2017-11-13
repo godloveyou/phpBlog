@@ -25,6 +25,8 @@ Route::get('/admin/weclome', 'Admin\IndexController@weclome')->name('admin.weclo
 Route::get('/admin/article/index','Admin\ArticlesController@index');
 Route::get('/admin/article/create','Admin\ArticlesController@create');
 Route::post('/admin/article/store','Admin\ArticlesController@store')->name('article.store');
+Route::get('/admin/article/edit/{article_id}','Admin\ArticlesController@edit');
+Route::post('/admin/article/update','Admin\ArticlesController@update')->name('article.update');
 
 Route::get('/admin/category/index','Admin\CategoryController@index');
 Route::get('/admin/tag/index','Admin\TagController@index');
